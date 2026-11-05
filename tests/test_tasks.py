@@ -34,6 +34,13 @@ class TestTasks(unittest.TestCase):
         self.assertEqual(len(tareas_estudio), 1)
         self.assertEqual(tareas_estudio[0]["titulo"], "Repasar Python")
 
+    def test_pendientes_categoria_inexistente_devuelve_vacio(self):
+        tareas = []
+        agregar_tarea(tareas, "Repasar Python", "Estudio")
+        agregar_tarea(tareas, "Enviar correo", "Trabajo")
+
+        self.assertEqual(pendientes(tareas, "Personal"), [])
+
 
 if __name__ == "__main__":
     unittest.main()
